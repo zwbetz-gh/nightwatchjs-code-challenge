@@ -10,31 +10,26 @@ module.exports = {
   commands: [
     {
       setNumber1: function (val) {
-        this.waitForElementVisible('@number1');
         this.expect.element('@number1').to.be.enabled.before(5000);
         this.setValue('@number1', val);
         return this;
       },
       setNumber2: function (val) {
-        this.waitForElementVisible('@number2');
         this.expect.element('@number2').to.be.enabled.before(5000);
         this.setValue('@number2', val);
         return this;
       },
       setOperation: function (val) {
-        this.waitForElementVisible('@operation');
         this.expect.element('@operation').to.be.enabled.before(5000);
         this.setValue('@operation', val);
         return this;
       },
       clickSubmit: function () {
-        this.waitForElementVisible('@submit');
         this.expect.element('@submit').to.be.enabled.before(5000);
         this.click('@submit');
         return this;
       },
       assertResult: function (val) {
-        this.waitForElementVisible('@result');
         this.assert.value('@result', val);
         return this;
       }

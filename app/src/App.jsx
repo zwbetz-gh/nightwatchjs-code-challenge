@@ -10,6 +10,31 @@ function App() {
     formState: {errors}
   } = useForm();
 
+  const [loading, setLoading] = React.useState(true);
+  const [number1Disabled, setNumber1Disabled] = React.useState(true);
+  const [number2Disabled, setNumber2Disabled] = React.useState(true);
+  const [operationDisabled, setOperationDisabled] = React.useState(true);
+
+  const DELAY_IN_SECONDS = 3;
+
+  const spinner = (
+    <div>
+      <div>
+        <div class="d-flex align-items-center">
+          <strong>
+            Artificially disabling fields for {DELAY_IN_SECONDS} seconds...
+          </strong>
+          <div
+            class="spinner-border"
+            style={{marginLeft: '0.5rem'}}
+            role="status"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </div>
+    </div>
+  );
+
   const requiredAsterisk = <span className="custom-required">*</span>;
 
   const operationToAction = {
@@ -19,23 +44,10 @@ function App() {
     '/': (number1, number2) => number1 / number2
   };
 
-  const createNumberLabel = (id, label) => {
-    return (
-      <label htmlFor={id} className="form-label">
-        {label} {requiredAsterisk}
-      </label>
-    );
-  };
-
-  const createNumberInput = (id, name) => {
-    return (
-      <input
-        id={id}
-        type="number"
-        className="form-control"
-        {...register(name, {required: true})}
-      />
-    );
+  const enableFields = () => {
+    setNumber1Disabled(false);
+    setNumber2Disabled(false);
+    setOperationDisabled(false);
   };
 
   const createRequiredMessage = (name, label) => {
@@ -56,23 +68,48 @@ function App() {
   };
 
   React.useEffect(() => {
-    console.log('once');
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      enableFields();
+    }, DELAY_IN_SECONDS * 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <div className="container custom-container">
       <h1 className="custom-h1">Calculator</h1>
 
+      {loading && spinner}
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
-          {createNumberLabel('number1', 'Number 1')}
-          {createNumberInput('number1', 'number1')}
+          <label htmlFor="number1" className="form-label">
+            Number 1 {requiredAsterisk}
+          </label>
+          <input
+            id="number1"
+            type="number"
+            className="form-control"
+            disabled={number1Disabled}
+            {...register('number1', {required: true})}
+          />
           {errors.number1 && createRequiredMessage('number1', 'Number 1')}
         </div>
 
         <div className="mb-3">
-          {createNumberLabel('number2', 'Number 2')}
-          {createNumberInput('number2', 'number2')}
+          <label htmlFor="number2" className="form-label">
+            Number 2 {requiredAsterisk}
+          </label>
+          <input
+            id="number2"
+            type="number"
+            className="form-control"
+            disabled={number2Disabled}
+            {...register('number2', {required: true})}
+          />
           {errors.number2 && createRequiredMessage('number2', 'Number 2')}
         </div>
 
@@ -84,6 +121,7 @@ function App() {
             id="operation"
             defaultValue=""
             className="form-control"
+            disabled={operationDisabled}
             {...register('operation', {required: true})}
           >
             <option value="" disabled>
