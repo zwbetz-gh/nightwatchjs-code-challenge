@@ -1,0 +1,14 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "author": "",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "nightwatch": "^1.7.8"
+  }
+}

@@ -71,6 +71,12 @@ function App() {
         </div>
 
         <div className="mb-3">
+          {createNumberLabel('number2', 'Number 2')}
+          {createNumberInput('number2', 'number2')}
+          {errors.number2 && createRequiredMessage('number2', 'Number 2')}
+        </div>
+
+        <div className="mb-3">
           <label htmlFor="operation" className="form-label">
             Operation {requiredAsterisk}
           </label>
@@ -92,12 +98,6 @@ function App() {
         </div>
 
         <div className="mb-3">
-          {createNumberLabel('number2', 'Number 2')}
-          {createNumberInput('number2', 'number2')}
-          {errors.number2 && createRequiredMessage('number2', 'Number 2')}
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="result" className="form-label">
             Result
           </label>
@@ -110,7 +110,11 @@ function App() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary custom-button">
+        <button
+          id="submit"
+          type="submit"
+          className="btn btn-primary custom-button"
+        >
           Submit
         </button>
       </form>
