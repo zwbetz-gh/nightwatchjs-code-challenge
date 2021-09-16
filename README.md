@@ -10,7 +10,8 @@
 1. Copy file `.env.sample` to a new file `.env`
 1. Download Google Chromedriver. Make sure it **matches** your Google Chrome version
 1. Edit file `.env` and set `CHROMEDRIVER_PATH` to the absolute path of your `chromedriver`
-    - For example: `CHROMEDRIVER_PATH=/Users/John/Desktop/chromedriver`
+    - Mac example: `CHROMEDRIVER_PATH=/Users/YourUsername/Desktop/chromedriver`
+    - Windows example: `CHROMEDRIVER_PATH=/Users/YourUsername/Desktop/chromedriver.exe`
 
 ## Run
 
