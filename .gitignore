@@ -1,1 +1,7 @@
+node_modules/
+screens/
+tests_output/
+.env
 local_git_config.sh
+chromedriver.log
+geckodriver.log

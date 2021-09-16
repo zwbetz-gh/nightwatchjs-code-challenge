@@ -1,7 +1,7 @@
 module.exports = {
   'do addition': function (browser) {
+    browser.url(browser.launchUrl);
     const calculator = browser.page.calculator();
-    calculator.navigate();
     calculator.setNumber1('3');
     calculator.setNumber2('3');
     calculator.setOperation('+');
@@ -10,8 +10,8 @@ module.exports = {
     browser.end();
   },
   'do subtraction': function (browser) {
+    browser.url(browser.launchUrl);
     const calculator = browser.page.calculator();
-    calculator.navigate();
     calculator.setNumber1('3');
     calculator.setNumber2('3');
     calculator.setOperation('-');
@@ -20,8 +20,8 @@ module.exports = {
     browser.end();
   },
   'do multiplication': function (browser) {
+    browser.url(browser.launchUrl);
     const calculator = browser.page.calculator();
-    calculator.navigate();
     calculator.setNumber1('3');
     calculator.setNumber2('3');
     calculator.setOperation('*');
@@ -30,8 +30,8 @@ module.exports = {
     browser.end();
   },
   'do division': function (browser) {
+    browser.url(browser.launchUrl);
     const calculator = browser.page.calculator();
-    calculator.navigate();
     calculator.setNumber1('3');
     calculator.setNumber2('3');
     calculator.setOperation('/');

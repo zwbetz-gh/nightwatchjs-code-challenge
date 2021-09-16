@@ -1,5 +1,4 @@
 module.exports = {
-  url: 'http://localhost:3000',
   elements: {
     number1: '#number1',
     number2: '#number2',
